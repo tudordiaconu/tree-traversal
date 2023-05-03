@@ -1,0 +1,24 @@
+name: Doxygen
+
+on:
+  create:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Doxygen
+        uses: mivok/doxygen-action@v1
+        with:
+          version: '1.9.1'
+      - name: Generate documentation
+        run: doxygen Doxyfile
+      - name: Archive documentation
+        uses: actions/upload-artifact@v2
+        with:
+          name: documentation
+          path: html/
