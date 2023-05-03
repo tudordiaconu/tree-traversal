@@ -35,3 +35,10 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+
+    - name: Discord notification
+        if: ${{ failure() }}
+        uses: appleboy/discord-action@master
+        with:
+          webhook_url: https://discord.com/api/webhooks/1103323560157663372/K1Q-qr0bkenW1tt7BNWHm2wCGX2MCFSYTQdCfuz7PnUlDYgC7fDkrUKAzcv06JmIrtBT
+          content: "Testele au picat!"
