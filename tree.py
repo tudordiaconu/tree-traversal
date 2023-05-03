@@ -1,5 +1,5 @@
 from node import Node
-
+import pytest
 
 class Tree:
     """ Tree class for binary tree """
@@ -20,7 +20,7 @@ class Tree:
             self._add(data, self.root)
 
     def _add(self, data, node):
-        """Method for add data to the tree
+        """ Method for add data to the tree
 
         Args:
             data (int): data to add
@@ -40,7 +40,7 @@ class Tree:
                 node.right = Node(data)
 
     def find(self, data):
-        """Method for find data in the tree
+        """ Method for find data in the tree
 
         Args:
             data (int): data to find
@@ -62,27 +62,52 @@ class Tree:
             return self._find(data, node.right)
 
     def deleteTree(self):
-        # TODO 1
+        """ Method for delete data in the tree
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
         self.root = None
 
     def printTree(self):
-        # TODO 1
+        """ Method for printing the tree
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
         if self.root is not None:
             self._printInorderTree(self.root)
 
     def _printInorderTree(self, node):
-        # TODO 1
+        """ Method for printing inorder the tree
+
+        Args:
+            node(Node): root
+
+        Returns:
+            None
+        """
         if node is not None:
             self._printInorderTree(node.left)
             print(str(node.data) + ' ')
             self._printInorderTree(node.right)
 
     def _printPreorderTree(self, node):
-        # TODO 2
-        pass
+        if node is not None:
+            print(str(node.data) + ' ')
+            self._printInorderTree(node.left)
+            self._printInorderTree(node.right)
 
     def _printPostorderTree(self, node):
-        # TODO 2
-        pass
-
-
+        if node is not None:
+            self._printInorderTree(node.left)
+            self._printInorderTree(node.right)
+            print(str(node.data) + ' ')
+        
+    
