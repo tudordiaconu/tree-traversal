@@ -9,4 +9,4 @@ def test_find():
 
 def test_find_not():
     copac.add(8)
-    assert copac.find(8).data == 6
+    assert copac.find(8).data == 8
